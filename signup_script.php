@@ -8,7 +8,7 @@ require("includes/common.php");
   $email = mysqli_real_escape_string($con, $_POST['email']);
 
 //  $password = $_POST['pass'];
-  $password = mysqli_real_escape_string($con, md5($_POST['pass']));
+  $password = mysqli_real_escape_string($con,$_POST['pass']);
 //  $password = MD5($password);
   
 
@@ -29,17 +29,14 @@ require("includes/common.php");
   $num = mysqli_num_rows($result);
   
   if ($num != 0) {
-      echo "Email Already exist";
-//    $m = "<span class='red'>Email Already Exists</span>";
-//    header('location: signup.php?m1=' . $m);
+   $m = "<span class='red'>Email Already Exists</span>";
+   header('location: signup.php?m=' . $m);
   } else if (!preg_match($regex_email, $email)) {
-//    $m = "<span class='red'>Not a valid Email Id</span>";
-//    header('location: signup.php?m1=' . $m);
-      echo "Not a valid email";
+     $m = "<span class='red'>Not a valid Email Id</span>";
+    header('location: signup.php?m=' . $m);
   } else if (!preg_match($regex_num, $contact)) {
-//    $m = "<span class='red'>Not a valid phone number</span>";
-//    header('location: signup.php?m2=' . $m);
-      echo "Not a valid number";
+   $m = "<span class='red'>Not a valid phone number</span>";
+    header('location: signup.php?m=' . $m);
   } else {
     
     $query = "INSERT INTO users(name, email, password, contact, city, address)VALUES('" . $name . "','" . $email . "','" . $password . "','" . $contact . "','" . $city . "','" . $address . "')";

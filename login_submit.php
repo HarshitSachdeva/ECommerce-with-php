@@ -5,7 +5,7 @@
 //        $email = $_POST['email'];
         $email = mysqli_real_escape_string($con, $_POST['email']);
 //        $password = $_POST['epass'];
-        $password = mysqli_real_escape_string($con, md5($_POST['password']));
+        $password = mysqli_real_escape_string($con,$_POST['password']);
 //        $password = MD5($password);
         // Query checks if the email and password are present in the database.
         $query = "SELECT id, email FROM users WHERE email='$email' AND password='$password'";

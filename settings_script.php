@@ -6,15 +6,15 @@
     }
 
 //    $old_pass = $_POST['old-password'];
-    $old_pass = mysqli_real_escape_string($con, md5($_POST['old-password']));
+    $old_pass = mysqli_real_escape_string($con,$_POST['old-password']);
 //    $old_pass = MD5($old_pass);
 
 //    $new_pass = $_POST['password'];
-    $new_pass = mysqli_real_escape_string($con, md5($_POST['password']));
+    $new_pass = mysqli_real_escape_string($con,$_POST['password']);
 //    $new_pass = MD5($new_pass);
 
 //    $new_pass1 = $_POST['password1'];
-    $new_pass1 = mysqli_real_escape_string($con, md5($_POST['password1']));
+    $new_pass1 = mysqli_real_escape_string($con,$_POST['password1']);
 //    $new_pass1 = MD5($new_pass1);
 
     $query = "SELECT email, password FROM users WHERE email ='" . $_SESSION['email'] . "'";
